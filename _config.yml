@@ -14,7 +14,7 @@ twitter: ""  #Add your twitter url here.
 
 #disqus comment
 disqus:
-    shortname: "bingentzio" #replace with your disqus comment short name
+    shortname: "bingentzio.disqus.com/admin/" #replace with your disqus comment short name
 
 #google analytics
 google:
