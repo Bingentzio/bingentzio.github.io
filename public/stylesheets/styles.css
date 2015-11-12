@@ -366,3 +366,10 @@ ul#menu {
 ul#menu li {
     display: inline;
 }
+
+ul#gaia{
+list-style-type: none;
+}
+li#gaia {
+  border-bottom: 1px solid #ccc;
+}
