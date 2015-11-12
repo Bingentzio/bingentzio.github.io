@@ -356,3 +356,25 @@ footer .right{
 .strava-badge- img { visibility: hidden; height: 16px; }
 .strava-badge-:hover { background-position: 0 -31px; }
 .strava-badge-follow { height: 16px; width: 16px; background: url(//badges.strava.com/echelon-sprite-16.png) no-repeat 0 0; }
+
+/*lista horizontalak egiteko*/
+
+ul#menu {
+    padding: 0;
+}
+
+ul#menu li {
+    display: inline;
+}
+
+ul#menu li a {
+    background-color: #49B1F7;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+}
+
+ul#menu li a:hover {
+    background-color: #EC4E3B;
+}
