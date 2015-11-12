@@ -360,6 +360,7 @@ footer .right{
 /*lista horizontalak egiteko*/
 
 ul#menu {
+  text-align: center;
     padding: 15px;
 }
 
