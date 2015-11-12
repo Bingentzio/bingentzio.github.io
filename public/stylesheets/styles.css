@@ -360,21 +360,9 @@ footer .right{
 /*lista horizontalak egiteko*/
 
 ul#menu {
-    padding: 5px;
+    padding: 10px;
 }
 
 ul#menu li {
     display: inline;
-}
-
-.botoia {
-    background-color: #49B1F7;
-    color: white;
-    padding: 20px 20px;
-    text-decoration: none;
-    border-radius: 4px 4px 4px 4px;;
-}
-
-.botoia:hover {
-    background-color: #EC4E3B;
 }
