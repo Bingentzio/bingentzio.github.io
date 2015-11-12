@@ -371,5 +371,9 @@ ul#gaia{
 list-style-type: none;
 }
 li#gaia {
+  margin-top: 5px;
   border-bottom: 1px solid #ccc;
+}
+li#gaia:last-child {
+  border: none;
 }
