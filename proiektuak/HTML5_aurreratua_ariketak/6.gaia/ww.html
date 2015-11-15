@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"> </head>
+<body>
+<script>
+
+var erloju ;
+var myWorker = new Worker("worker.js");
+window.onload = function() {
+// 	var num= 2227644437;
+	var bistaratuBotoia = document.getElementById("bistaratu");
+	bistaratuBotoia.onclick = function() {
+		erloju = setInterval(bistaratu,100);
+	};
+
+	var kalkulatuBotoia = document.getElementById("kalkulatu");
+	kalkulatuBotoia.onclick = function() {
+    var num = document.getElementById("zenbakia");
+    console.log("Zenbakia: "+num.value);
+    myWorker.postMessage(num.value);
+}
+
+}
+
+function bistaratu() {
+	var irteera = document.getElementById("irteera");
+	irteera.innerHTML = irteera.innerHTML + " #";
+}
+
+myWorker.onmessage=function(event){
+  if(event.data[1]==true){
+    document.getElementById("irteera").innerHTML +="Lehena da" +event.data[0];
+    console.log("Kalkulatzen:" + event.data[0] +" "+event.data[1]);
+  }else{
+      document.getElementById("irteera").innerHTML += "Ez da lehena"+event.data[0];
+      console.log("Kalkulatzen:" + event.data[0] +" "+event.data[1]);
+  }
+
+
+}
+/*
+function isLehena(n) {
+	var i = 2;
+	if (n == 2) return true;
+	for (; i < n; ++i) {
+		if (n % i == 0) {
+			document.getElementById("irteera").innerHTML += i;
+		       	return false;
+		}
+		 console.log("Kalkulatzen:" + i);
+	}
+ 	clearInterval(erloju);
+	document.getElementById("irteera").innerHTML += i;
+	return true;
+}
+*/
+
+</script>
+<div id="irteera"></div>
+<form>
+  Lehena den kalkulatzeko zenbakia ipini: <input type="number" id="zenbakia" value="2227644437">
+	<input type="button" id="kalkulatu" value="kalkulatu">
+	<input type="button" id="bistaratu" value="bistaratu">
+</form>
+
+</body>
+</html>
