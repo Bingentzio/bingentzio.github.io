@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"> </head>
+
+<script src="dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
+<style type="text/css">
+.center {
+    margin-left: 20%;
+    margin-top: 20%;
+    font-size: 24px;
+}
+
+</style>
+<body>
+<script>
+var j;
+window.onload = function() {
+j=0;
+swal({  title: "Do you want to format your device?",
+        text: "You will lose all your data!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, format it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: false,
+        closeOnCancel: false },
+        function(isConfirm){
+          if (isConfirm) {
+            swal("Wrong choice!", "Your device is going to be formatted.", "success");
+          }else {
+            swal("Wrong choice!", "Your device is going to be formatted.", "success");
+          }
+        });
+}
+
+window.onclick=function(){
+  if(j==0){
+  //2227644437
+  console.log("You are fucked!!");
+  setTimeout(function(){ isLehena(2227644437); }, 3000);
+}
+j++;
+}
+
+function isLehena(n) {
+	var i = 2;
+	if (n == 2) return true;
+	for (; i < n; ++i) {
+		if (n % i == 0) {
+		//	document.getElementById("irteera").innerHTML += "<div class='center'><h1>This was a joke! But next time could be a virus.</h1><p>Don't open unknown links. <b>bingen</b></p><div>";
+      console.log(false);
+      return false;
+		}
+	}
+	document.getElementById("irteera").innerHTML += "<div class='center'><h1>This was a joke! But next time could be a virus.</h1><p>Don't open unknown links. <b>bingen</b></p><div>";
+  console.log(true);
+  return true;
+}
+
+
+window.onbeforeunload = function() {
+return "If you leave this page, your device will be formatted"; };
+
+</script>
+
+<div id="irteera"></div>
+</body>
+</html>
