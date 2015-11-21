@@ -1,4 +1,17 @@
+#erdian{
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+}
 #canvas {
+  float: left;
     border:1px solid #000000;
 }
-
+#panela{
+  float: right;
+  text-align: center;
+}
+#puntuak{
+  font-size: 18px;
+  font-weight: bold;
+}

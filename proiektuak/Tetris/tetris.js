@@ -77,6 +77,8 @@ function Block (pos, color) {
      this.setFill(color);
 }
 
+var ezabatutakoLerroak;
+
 Block.BLOCK_SIZE = 30;
 Block.OUTLINE_WIDTH = 2;
 
@@ -399,17 +401,35 @@ Board.prototype.move_down_rows = function(y_start){
 Board.prototype.remove_complete_rows = function(){
    for (var y=0; y<=this.height; y++){
         if (this.is_row_complete(y)){
+          garbitu.play();
                 this.delete_row(y);
                 this.move_down_rows(y-1);
+                ezabatutakoLerroak++;
+                puntuak.innerHTML=ezabatutakoLerroak;
+                //5 lerro ezabatzen dituenean maila igoko du!
+                if (ezabatutakoLerroak % 5 == 0){
+                  console.log("maila igo");
+                  mailaKop++;
+                  maila.innerHTML=mailaKop;
+                  igo=1;
+                }
         }
    }
 };
 
 // ==================== Tetris ==========================
 var interval;
+var time; //setInterval eko denbora da
+var igo; //honen bidez dakigu setintervali noiz kendu denbora
 
 function Tetris() {
     this.board = new Board(Tetris.BOARD_WIDTH, Tetris.BOARD_HEIGHT);
+    musika = new Audio("soinuak/musika.mp3");
+    gameover = new Audio("soinuak/gameover.mp3");
+    garbitu = new Audio("soinuak/garbitu.mp3");
+    mugitu = new Audio("soinuak/mugitu.mp3");
+    biratu = new Audio("soinuak/biratu.mp3");
+    mailagora = new Audio("soinuak/mailagora.mp3");
 }
 
 Tetris.SHAPES = [I_Shape, J_Shape, L_Shape, O_Shape, S_Shape, T_Shape, Z_Shape];
@@ -439,6 +459,8 @@ Tetris.prototype.init = function(){
 	// teklatu kudeatzailea
 //	document.addEventListener('keydown', this.key_pressed.bind(this), false);
 document.addEventListener('keydown', this.key_pressed.bind(this), false);
+  musika.loop = true;
+  musika.play()
 
     // Ausaz aukeratu pieza bat --> uneko pieza
     this.current_shape = this.create_new_shape()
@@ -448,7 +470,11 @@ document.addEventListener('keydown', this.key_pressed.bind(this), false);
     // Argibidea: (Board badu margotzeko metodo bat)
     this.board.draw_shape(this.current_shape);
    //segunduro pieza behera doa
-    interval = setInterval(this.animate_shape.bind(this),1000);
+    time=1000;
+    ezabatutakoLerroak=0;
+    mailaKop=0;
+    igo=0;
+    interval = setInterval(this.animate_shape.bind(this),time);
 }
 
 Tetris.prototype.key_pressed = function(e) {
@@ -462,12 +488,15 @@ Tetris.prototype.key_pressed = function(e) {
 	// dagokion key kodea ? (biraketari dagokion kodea ez inplementatu oraindik)
 
     if (key == 37) {
+          mugitu.play();
           this.do_move("Left");
     }else if (key == 39){
+          mugitu.play();
           this.do_move("Right");
     }else if (key == 40){
           this.do_move("Down");
     }else if (key == 38){
+          biratu.play();
 	        this.do_rotate();
     }else if (key==32) {
           this.do_move("Behera")
@@ -495,15 +524,6 @@ Tetris.prototype.do_move = function(direction) {
       }else{
         gameOver();
       }
-
-            /*
-            for(var i=0; i<this.board.height;i++){
-              if(this.board.is_row_complete(i)){
-                this.board.delete_row(i);
-                this.board.move_down_rows(i);
-              }
-            }
-            */
     }else{
       while(this.current_shape.can_move(this.board, dx, dy)){
            this.current_shape.move(dx,dy);
@@ -526,16 +546,29 @@ Tetris.prototype.do_rotate = function(){
   }
 }
 
+
 Tetris.prototype.animate_shape = function(){
   this.do_move("Down");
+
+  //mailaz igotzen denean abiadura azkartzen du!
+  if(igo==1 && time>0){
+    mailagora.play();
+    igo=0;
+    clearInterval(interval);
+    time=time-100;
+    interval = setInterval(this.animate_shape.bind(this),time);
+  }
 }
+
 function gameOver(){
+  musika.pause();
+  gameover.play();
   clearInterval(interval);
   console.log("game over");
   ctx.fillStyle = "white";
   ctx.strokeStyle = "black";
-  ctx.lineWidth=2;
-  ctx.font = "bold 48px Arial";
+  ctx.lineWidth=3;
+  ctx.font = "bold 46px Arial";
   ctx.fillText("GAME OVER", 4, 140);
   ctx.strokeText("GAME OVER", 4, 140);
 

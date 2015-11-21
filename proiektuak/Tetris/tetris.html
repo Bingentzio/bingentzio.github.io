@@ -6,7 +6,17 @@
    <script src="tetris.js"></script>
 </head>
 <body>
+  <div id="erdian">
     <canvas id="canvas" width="300" height="600"></canvas>
+    <div id="panela">
+      <h3>PUNTUAZIOA</h3>
+      <p id="puntuak">0</p>
+      <h3>MAILA</h3>
+      <p id="maila">0</p>
+
+    </div>
+
+    </div>
 
 <script>
 // ===== main ====
@@ -14,9 +24,12 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+var puntuak = document.getElementById("puntuak");
+var maila = document.getElementById("maila");
+
 // clear the canvas
 ctx.fillStyle = 'white';
-ctx.fillRect(0,0,canvas.width,canvas.height); 
+ctx.fillRect(0,0,canvas.width,canvas.height);
 
 var game = new Tetris();
 game.init();
