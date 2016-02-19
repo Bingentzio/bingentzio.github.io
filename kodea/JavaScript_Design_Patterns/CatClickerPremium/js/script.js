@@ -11,7 +11,7 @@ function Counter()
       success: function (data) {
           //List all .jpg file names in the page
           $(data).find("a:contains(" + fileextension + ")").each(function () {
-              var catname = this.href.replace(window.location.host, "").replace("http://", "").replace("/CatClickerPremium/","");
+              var catname = this.href.replace(window.location, "").replace("http://", "");
 
               // We're creating a DOM element
               var elem = document.createElement('li');
