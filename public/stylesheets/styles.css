@@ -358,7 +358,7 @@ footer .right{
 .strava-badge-follow { height: 16px; width: 16px; background: url(//badges.strava.com/echelon-sprite-16.png) no-repeat 0 0; }
 
 /*lista horizontalak egiteko*/
-
+/*
 ul#menu {
     padding: 10px;
 }
@@ -377,3 +377,4 @@ li#gaia {
 li#gaia:last-child {
   border: none;
 }
+*/

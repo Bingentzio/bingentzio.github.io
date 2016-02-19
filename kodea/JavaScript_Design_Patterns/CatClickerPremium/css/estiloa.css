@@ -10,7 +10,7 @@ body {
   font-size: 12px;
   color: #424242;
 }
-header {
+.header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   min-height: 56px;
   transition: min-height 0.3s;
@@ -26,13 +26,9 @@ header {
 }
 main {
   margin-top: 24px;
-  text-align: center;
+
+  font-size: 20px;
 }
-#CatImage{
+.cat{
   border: 5px solid rgba(0, 0, 0, 0.26);
-  width: 40%;
-  height: 40%;
-}
-.number{
-  font-size: 45px;
 }
